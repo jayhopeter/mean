@@ -8,6 +8,8 @@ console.log = function(){
 };
 */
 
+process.env.NODE_CONFIG_DIR = './config/env';
+
 // Requires meanio .
 var mean = require('meanio');
 var cluster = require('cluster');
@@ -24,7 +26,7 @@ if ((cluster.isMaster) &&
 
     console.log('for real!');
     // Count the machine's CPUs
-    var cpuCount = require('os').cpus().length;
+    var cpuCount = process.env.CPU_COUNT || require('os').cpus().length;
 
     // Create a worker for each CPU
     for (var i = 0; i < cpuCount; i += 1) {
@@ -50,7 +52,7 @@ if ((cluster.isMaster) &&
     }
 // Creates and serves mean application
     mean.serve({ workerid: workerId /* more options placeholder*/ }, function (app) {
-      var config = app.config.clean;
+      var config = app.getConfig();
       var port = config.https && config.https.port ? config.https.port : config.http.port;
       console.log('Mean app started on port ' + port + ' (' + process.env.NODE_ENV + ') cluster.worker.id:', workerId);
 
