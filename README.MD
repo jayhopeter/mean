@@ -8,13 +8,13 @@ MEAN is a framework for an easy starting point with [MongoDB](https://www.mongod
 
 ## Prerequisite Technologies
 ### Linux
-* *Node.js* - <a href="http://nodejs.org/download/">Download</a> and Install Node.js, nodeschool has free <a href=" http://nodeschool.io/#workshoppers">node tutorials</a> to get you started.
+* *Node.js* - <a href="http://nodejs.org/download/">Download</a> and Install Node.js, nodeschool has free <a href=" http://nodeschool.io/#workshoppers">node tutorials</a> to get you started. We recommend node-4.x as the preffered node version to run mean.io.
 * *MongoDB* - <a href="https://www.mongodb.org/downloads">Download</a> and Install mongodb - <a href="https://docs.mongodb.org/manual/">Checkout their manual</a> if you're just starting.
 
 If you're using ubuntu, this is the preferred repository to use...
 
 ```bash
-$ curl -sL https://deb.nodesource.com/setup | sudo bash -
+$ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 $ sudo apt-get update
 $ sudo apt-get install nodejs
 ```
@@ -46,8 +46,9 @@ This will add the *mean* command which lets you interact (install, manage, updat
 
 ### Install the MEAN CLI
 
+In linux install in globally as root
 ```bash
-$ npm install -g mean-cli
+$ sudo npm install -g mean-cli 
 $ mean init <myApp>
 $ cd <myApp> && npm install
 ```
@@ -484,7 +485,7 @@ app.get('/myPackage/example/render', function (req,res,next) {
 ###Overriding the default layouts
 One is able to override the default layout of the application through a custom package.
 
-Below is an example overriding the default layout of system and instead using the layourts found locally within the package
+Below is an example overriding the default layout of system and instead using the layouts found locally within the package
 
 ```javascript
 MyPackage.register(function(system, app) {
@@ -526,7 +527,7 @@ Where "myPackage" is the name of your package.
 
 
 ### Contributing your package
-Once your package is in good shape and you want to share it with the world you can start the process of contributing it and submiting it so it can be included in the package repository.
+Once your package is in good shape and you want to share it with the world you can start the process of contributing it and submitting it so it can be included in the package repository.
 To contribute your package register to the network (see the section below) and run
 
 ```bash
